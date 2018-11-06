@@ -43,8 +43,7 @@ if triangle.all_equal?
   puts "Треугольник равносторонний и не может быть прямоугольным"
 else
   hypotenuse = triangle.max
-  triangle.delete_at(triangle.index(hypotenuse))
-  cathetus = triangle
+  cathetus = triangle.min(2)
   if (hypotenuse ** 2).equals?(cathetus[0] ** 2 + cathetus[1] ** 2, 0.0000000000001)
     puts "Треугольник прямоугольный"
   else
