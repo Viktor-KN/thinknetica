@@ -10,43 +10,26 @@
 # квадрате с суммой квадратов двух остальных сторон. Если все 3 стороны равны,
 # то треугольник равнобедренный и равносторонний, но не прямоугольный.
 
-require_relative 'my_lib'
+puts 'Программа по длинам сторон треугольника вычисляет, является ли он' \
+     ' прямоугольным.'
 
-class Array
-  def all_equal?
-    self.uniq.length == 1
-  end
-  def some_equal?
-    self.uniq.length == 2
-  end
-end
-
-class Float
-  def equals?(x, tolerance)
-    (self - x).abs < tolerance
-  end
-end
-
-puts "Программа по длинам сторон треугольника вычисляет, является ли он"\
-     " прямоугольным."
-
-validate_float = lambda {|str| str.match?(/\A-?+(?=.??\d)\d*\.?\d*\z/) && str.to_f > 0}
-
-a = ask("Введите длину первой стороны треугольника:", :float, &validate_float)
-b = ask("Введите длину второй стороны треугольника:", :float, &validate_float)
-c = ask("Введите длину третьей стороны треугольника:", :float, &validate_float)
+print 'Введите длину первой стороны треугольника: '
+a = gets.strip.to_f
+print 'Введите длину второй стороны треугольника: '
+b = gets.strip.to_f
+print 'Введите длину третьей стороны треугольника: '
+c = gets.strip.to_f
 
 triangle = [a, b, c]
-
-puts "Треугольник равнобедренный" if triangle.some_equal?
-if triangle.all_equal?
-  puts "Треугольник равносторонний и не может быть прямоугольным"
+puts 'Треугольник равнобедренный' if triangle.uniq.size == 2
+if triangle.uniq.size == 1
+  puts 'Треугольник равносторонний и не может быть прямоугольным'
 else
   hypotenuse = triangle.max
-  cathetus = triangle.min(2)
-  if (hypotenuse ** 2).equals?(cathetus[0] ** 2 + cathetus[1] ** 2, 0.0000000000001)
-    puts "Треугольник прямоугольный"
+  c1, c2 = triangle.min(2)
+  if (hypotenuse**2).round(5) == (c1**2 + c2**2).round(5)
+    puts 'Треугольник прямоугольный'
   else
-    puts "Треугольник не прямоугольный"
+    puts 'Треугольник не прямоугольный'
   end
 end

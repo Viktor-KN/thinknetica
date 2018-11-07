@@ -5,16 +5,16 @@
 # пользователю на экран с обращением по имени. Если идеальный вес получается
 # отрицательным, то выводится строка "Ваш вес уже оптимальный"
 
-require_relative 'my_lib'
-
 puts 'Программа вычисляет "идеальный" вес, в зависимости от роста.'
 
-name = ask("Ваше имя:", :string) {|str| str != ""}.capitalize
-height = ask("Ваш рост в сантиметрах:", :integer) {|str| str.to_i > 0}
+print 'Ваше имя: '
+name = gets.strip.capitalize
+print 'Ваш рост в сантиметрах: '
+height = gets.strip.to_i
 
 weight = height - 110
 
-unless weight < 0
+if weight >= 0
   puts "#{name}, Ваш идеальный вес составляет #{weight}кг."
 else
   puts "#{name}, Ваш вес уже оптимальный!"
