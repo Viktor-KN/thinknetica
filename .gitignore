@@ -1,1 +1,3 @@
 .vscode/*
+.rubocop.yml
+.solargraph.yml
