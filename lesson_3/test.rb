@@ -63,19 +63,19 @@ show_trains(s1, :freight)
 
 print "Move train1 to previous station (shouldn't move)---\n\n"
 train1.speed = 60
-train1.move(:previous)
+train1.move_to_previous
 show_train(train1)
 
 print "Move train2 to next station------------------------\n\n"
 train2.speed = 75
-train2.move(:next)
+train2.move_to_next
 show_train(train2)
 
 print "Is train2 really on station Three------------------\n\n"
 show_trains(s3)
 
 print "Move train1 to last station------------------------\n\n"
-3.times { train1.move(:next) }
+3.times { train1.move_to_next }
 show_train(train1)
 
 print "Checking station1 for trains (should be empty)-----\n\n"
@@ -96,5 +96,5 @@ train1.stop
 show_train(train1)
 
 print "Move train1 to next station (shouldn't move)-------\n\n"
-train1.move(:next)
+train1.move_to_next
 show_train(train1)

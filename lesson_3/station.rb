@@ -1,10 +1,4 @@
 class Station
-  private
-
-  attr_writer :trains
-
-  public
-
   attr_reader :name
 
   def initialize(name)
@@ -27,4 +21,8 @@ class Station
       @trains.select { |train| train.type == type }
     end
   end
+
+  private
+
+  attr_writer :trains
 end

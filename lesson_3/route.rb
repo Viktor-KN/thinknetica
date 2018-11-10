@@ -1,10 +1,4 @@
 class Route
-  private
-
-  attr_writer :stations
-
-  public
-
   attr_reader :stations
 
   def initialize(first_station, last_station)

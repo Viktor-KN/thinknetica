@@ -1,20 +1,15 @@
 class Train
-  private
-
-  attr_writer :wagons, :station
-
-  public
-
-  attr_reader :number, :type, :wagons, :route, :station
-  attr_accessor :speed
+  attr_reader :number, :type, :wagons, :speed, :route, :station
 
   def initialize(number, type, wagons)
     @number = number
     @type = type
     @wagons = wagons >= 0 ? wagons : 0
     @speed = 0
-    @route = nil
-    @station = nil
+  end
+
+  def speed=(speed)
+    @speed = speed < 0 ? 0 : speed
   end
 
   def stop
@@ -36,25 +31,26 @@ class Train
     station.add_train(self)
   end
 
-  def move(direction)
+  def move_to_next
     return unless station && route
 
-    case direction
-    when :next
-      next_station = self.next_station
-      return if next_station == station
+    next_station = self.next_station
+    return if next_station == station
 
-      station.remove_train(self)
-      next_station.add_train(self)
-      self.station = next_station
-    when :previous
-      previous_station = self.previous_station
-      return if previous_station == station
+    station.remove_train(self)
+    next_station.add_train(self)
+    self.station = next_station
+  end
 
-      station.remove_train(self)
-      previous_station.add_train(self)
-      self.station = previous_station
-    end
+  def move_to_previous
+    return unless station && route
+
+    previous_station = self.previous_station
+    return if previous_station == station
+
+    station.remove_train(self)
+    previous_station.add_train(self)
+    self.station = previous_station
   end
 
   def next_station
@@ -73,4 +69,8 @@ class Train
     prev_index = current_index.zero? ? 0 : current_index - 1
     route.stations[prev_index]
   end
+
+  private
+
+  attr_writer :wagons, :station
 end
