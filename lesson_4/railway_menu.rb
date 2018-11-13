@@ -35,7 +35,7 @@ class RailwayMenu < Menu
     if train_list.any? { |train| train.number == number }
       print_nn 'Поезд с таким номером уже существует!'
     else
-      train_list << Kernel.const_get(train_types[type][:class_name]).new(number)
+      train_list << const_get(train_types[type][:class_name]).new(number)
       print_nn 'Поезд успешно добавлен.'
     end
   end
@@ -88,7 +88,7 @@ class RailwayMenu < Menu
     wagon_type = wagon_types[ask('Выберите тип вагона: ', wagon_types)]
 
     if wagon_type[:allowed_trains].include?(train.class.to_s)
-      wagon = Kernel.const_get(wagon_type[:class_name]).new
+      wagon = const_get(wagon_type[:class_name]).new
       train.add_wagon(wagon)
       print_nn 'Вагон успешно прицеплен.'
     else
