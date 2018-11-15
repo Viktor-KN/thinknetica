@@ -1,15 +1,14 @@
 class Station
   include InstanceCounter
 
-  @instances = 0
-  @stations = []
-
   attr_reader :name
 
   class << self
     private
 
-    attr_reader :stations
+    def stations
+      @stations ||= []
+    end
 
     def add_station(station)
       stations << station
@@ -36,10 +35,10 @@ class Station
   end
 
   def trains(type = nil)
-    if type.nil?
-      @trains
-    else
+    if type
       @trains.select { |train| train.class == type }
+    else
+      @trains
     end
   end
 

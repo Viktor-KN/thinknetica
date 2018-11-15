@@ -2,21 +2,20 @@ class Train
   include Manufacturer
   include InstanceCounter
 
-  @instances = 0
-  @trains = []
-
   class << self
     private
 
-    attr_reader :trains
+    def trains
+      @trains ||= {}
+    end
 
     def add_train(train)
-      trains << train
+      trains[train.number] = train
     end
   end
 
   def self.find(number)
-    trains.find { |train| train.number == number }
+    trains[number]
   end
 
   attr_reader :number, :wagons, :speed, :route, :station
