@@ -1,8 +1,6 @@
 class Route
   include InstanceCounter
 
-  @instances = 0
-
   attr_reader :stations
 
   def initialize(first_station, last_station)

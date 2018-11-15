@@ -5,12 +5,16 @@ module InstanceCounter
   end
 
   module ClassMethods
-    attr_reader :instances
+    def instances
+      @instances ||= 0
+    end
 
     private
 
+    attr_writer :instances
+
     def add_instance
-      @instances += 1
+      self.instances += 1
     end
   end
 
