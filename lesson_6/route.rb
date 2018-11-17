@@ -1,5 +1,6 @@
 class Route
   include Instances
+  include Valid
 
   attr_reader :stations
 
@@ -30,13 +31,6 @@ class Route
                "#{station == stations.last ? '' : ' - '}"
     end
     title
-  end
-
-  def valid?
-    validate!
-    true
-  rescue RuntimeError
-    false
   end
 
   protected

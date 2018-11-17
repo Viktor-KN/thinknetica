@@ -1,5 +1,6 @@
 class Station
   include Instances
+  include Valid
 
   def self.find(name)
     instances.find { |instance| instance.name.casecmp(name).zero? }
@@ -28,13 +29,6 @@ class Station
     else
       @trains
     end
-  end
-
-  def valid?
-    validate!
-    true
-  rescue RuntimeError
-    false
   end
 
   def to_s

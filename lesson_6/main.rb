@@ -2,6 +2,7 @@
 
 require_relative 'instances'
 require_relative 'manufacturer'
+require_relative 'valid'
 require_relative 'station'
 require_relative 'route'
 require_relative 'train'
