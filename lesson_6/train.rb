@@ -1,6 +1,7 @@
 class Train
   include Manufacturer
   include Instances
+  include Valid
 
   # Вернул старый метод поиска, потому что теперь учет инстансов класса
   # унифицирован в модуле Instances.
@@ -112,13 +113,6 @@ class Train
 
   def to_s
     number
-  end
-
-  def valid?
-    validate!
-    true
-  rescue RuntimeError
-    false
   end
 
   protected
