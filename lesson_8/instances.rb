@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 module Instances
   def self.included(base)
     base.extend ClassMethods
@@ -24,3 +25,4 @@ module Instances
     end
   end
 end
+# rubocop:enable Style/Documentation

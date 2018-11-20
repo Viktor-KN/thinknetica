@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class CargoTrain < Train
   def initialize(number)
     super(number)
@@ -8,3 +9,4 @@ class CargoTrain < Train
     %i[CargoWagon]
   end
 end
+# rubocop:enable Style/Documentation

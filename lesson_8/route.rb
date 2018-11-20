@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class Route
   include Instances
   include Valid
@@ -17,11 +18,11 @@ class Route
   end
 
   def remove_station(station)
-    # rubocop предлагает переделать на Array#include?, но не вижу что это будет
-    # тут уместно в принципе.
+    # rubocop:disable Style/MultipleComparison
     raise "Can't remove first or last station." if station == stations.first ||
                                                    station == stations.last
 
+    # rubocop:enable Style/MultipleComparison
     stations.delete(station)
   end
 
@@ -42,3 +43,4 @@ class Route
           if stations.first == stations.last
   end
 end
+# rubocop:enable Style/Documentation

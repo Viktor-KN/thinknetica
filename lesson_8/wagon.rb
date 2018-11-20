@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class Wagon
   include Instances
   include Manufacturer
@@ -35,3 +36,4 @@ class Wagon
     raise 'Wagon with that number already exist.' if self.class.find(number)
   end
 end
+# rubocop:enable Style/Documentation

@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation, Metrics/ClassLength
 class RailwayMenu < Menu
   private
 
@@ -123,8 +124,7 @@ class RailwayMenu < Menu
     move_train(train, direction)
   end
 
-  # Даже и не знаю, как это можно еще больше сократить, чтобы убрать
-  # Metrics/AbcSize
+  # rubocop:disable Metrics/AbcSize
   def show_wagon(wagon, wagon_types)
     type = find_type(wagon.class, wagon_types)
     free_amount = wagon.send type[:methods][:free]
@@ -134,6 +134,7 @@ class RailwayMenu < Menu
     printf("Number: %-12s Type: %-12s %16s free: %#{df} Occupied: %#{df}\n",
            wagon.number, type[:title], measure, free_amount, occupied_amount)
   end
+  # rubocop:enable Metrics/AbcSize
 
   def show_wagons(wagon_list, wagon_types)
     return print_nn 'Wagon list is empty.' if empty?(wagon_list)
@@ -162,6 +163,7 @@ class RailwayMenu < Menu
     end
   end
 
+  # rubocop:disable Metrics/AbcSize
   def occupy_wagon(train_list, wagon_types)
     return print_nn 'Train list is empty.' if empty?(train_list)
 
@@ -177,6 +179,7 @@ class RailwayMenu < Menu
       print_nn "Error: #{e.message}"
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def show_routes(route_list)
     return print_nn 'Route list is empty.' if empty?(route_list)
@@ -198,6 +201,7 @@ class RailwayMenu < Menu
     end
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def new_wagon(train, wagon_types)
     wagon_type = wagon_types[ask('Choose wagon type: ', wagon_types)]
 
@@ -218,6 +222,7 @@ class RailwayMenu < Menu
       retry
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def couple_wagon(train_list, wagon_types)
     return print_nn 'Error: No trains found.' if empty?(train_list)
@@ -278,6 +283,8 @@ class RailwayMenu < Menu
     end
   end
 
+  # debug func
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def load_seed
     s1 = Station.new('Moscow')
     s2 = Station.new('St.Petersburg')
@@ -323,4 +330,6 @@ class RailwayMenu < Menu
     menu_list[:main_menu][:menu].delete('9')
     print_nn 'Seed data successfully loaded.'
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 end
+# rubocop:enable Style/Documentation, Metrics/ClassLength

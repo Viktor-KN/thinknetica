@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class PassengerWagon < Wagon
   include Valid
 
@@ -29,3 +30,4 @@ class PassengerWagon < Wagon
     raise 'Initial number of seats must be greater than zero.' unless seats > 0
   end
 end
+# rubocop:enable Style/Documentation

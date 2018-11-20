@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation, Metrics/ClassLength
 class Menu
   attr_reader :menu_list, :data_table
 
@@ -21,8 +22,8 @@ class Menu
 
   attr_accessor :current_menu, :current_title
 
-  # Честно говоря не имею представления, как это можно сократить, чтобы rubocop
-  # не ругался.
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength,
+  # rubocop:disable Metrics/CyclomaticComplexity, Style/MultilineIfModifier
   def validate!
     raise 'menu_list param must be a Hash.' unless menu_list.is_a?(Hash)
 
@@ -31,8 +32,6 @@ class Menu
     raise 'No mandatory key :default in menu_list.' \
           unless menu_list.key?(:default)
 
-    # Тут rubocop зациклился. Предлагает конвертировать в normal
-    # unless-statement, после переделки предлагает опять в modifier clause
     raise "No key :#{menu_list[:default]} in menu_list hash, defined by" \
           ' :default key.' unless menu_list.key?(menu_list[:default])
 
@@ -78,6 +77,8 @@ class Menu
       validate_data(title, value[:params]) unless value[:action] == :show_menu
     end
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength,
+  # rubocop:enable Metrics/CyclomaticComplexity, Style/MultilineIfModifier
 
   def validate_action(title, action)
     raise "No method defined for action :#{action} in #{title}" \
@@ -186,3 +187,4 @@ class Menu
     variant
   end
 end
+# rubocop:enable Style/Documentation, Metrics/ClassLength
