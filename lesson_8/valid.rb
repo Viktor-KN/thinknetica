@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 module Valid
   def valid?
     validate!
@@ -6,3 +7,4 @@ module Valid
     false
   end
 end
+# rubocop:enable Style/Documentation

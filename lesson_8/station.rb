@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class Station
   include Instances
   include Valid
@@ -57,3 +58,4 @@ class Station
     raise 'Station with that name already exist.' if self.class.find(name)
   end
 end
+# rubocop:enable Style/Documentation

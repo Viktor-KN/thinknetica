@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation, Metrics/ClassLength
 class Train
   include Manufacturer
   include Instances
@@ -39,6 +40,7 @@ class Train
     wagons.size.zero?
   end
 
+  # rubocop:disable Style/DoubleNegation
   def station_assigned?
     !!station
   end
@@ -46,6 +48,7 @@ class Train
   def route_assigned?
     !!route
   end
+  # rubocop:enable Style/DoubleNegation
 
   def wagon_count
     wagons.size
@@ -152,5 +155,5 @@ class Train
 
     raise 'Not on any station.' unless station_assigned?
   end
-
 end
+# rubocop:enable Style/Documentation, Metrics/ClassLength

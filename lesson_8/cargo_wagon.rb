@@ -1,3 +1,4 @@
+# rubocop:disable Style/Documentation
 class CargoWagon < Wagon
   include Valid
 
@@ -32,3 +33,4 @@ class CargoWagon < Wagon
     raise 'Initial volume must be grater than zero.' unless volume > 0
   end
 end
+# rubocop:enable Style/Documentation
